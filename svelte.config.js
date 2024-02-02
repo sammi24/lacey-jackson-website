@@ -9,7 +9,7 @@ const config = {
 		scss: {
 			// Specify any SCSS options here, such as includePaths
 			// Example:
-			includePaths: ['src/']
+			includePaths: ['src/', 'src/routes', 'src/routes/styles']
 		}
 	}),
 

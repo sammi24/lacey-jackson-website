@@ -10,6 +10,8 @@ $accent-color: #1f6e98;
 // Fonts
 $primary-font: 'Lato', sans-serif;
 $secondary-font: 'Helvetica Neue', sans-serif;
+
+//Background
 $texture-overlay: url('/Texture.png');
 
 //Utility Classes
@@ -18,10 +20,12 @@ $texture-overlay: url('/Texture.png');
 	gap: 4rem;
 }
 
+//Universal
 body {
 	background-color: $background-color;
 	color: $primary-color;
 	font-family: $primary-font;
+	overflow-x: hidden;
 
 	&:before {
 		content: '';
@@ -31,7 +35,21 @@ body {
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background: $texture-overlay; // Apply the texture overlay
+		background-image: $texture-overlay; // Apply the texture overlay
 		opacity: 0.15;
 	}
+}
+.stop-transitions * {
+	transition: none !important;
+	animation: none !important;
+}
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
 }

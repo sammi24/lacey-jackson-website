@@ -1,14 +1,38 @@
 <!-- TODO: add navbar and background texture -->
 
 <script>
-	import './styles/layout.scss';
-	import './styles/global.scss';
+	import styles from './layout.module.scss';
+	import { onDestroy, onMount } from 'svelte';
+
+	let navOpen = false;
+	function handleNav() {
+		navOpen = !navOpen;
+	}
+
+	let resizeTimer = 0;
+
+	function handleResize() {
+		document.body.classList.add('stop-transitions');
+		clearTimeout(resizeTimer);
+		resizeTimer = setTimeout(() => {
+			document.body.classList.remove('stop-transitions');
+		}, 600);
+	}
 </script>
 
 <!-- Navbar -->
-<div class="container flex">
-	<nav class="flex">
-		<ul class="flex">
+<div class={styles['container']}>
+	<button
+		on:click={handleNav}
+		class={`${styles['mobile-nav-toggle']} ${navOpen ? styles.closeBtn : ''}`}
+		aria-controls="primary-navigation"
+		aria-expanded="false"><span class="sr-only">Menu</span></button
+	>
+	<nav>
+		<ul
+			id="primary-navigation"
+			class={`${styles['primary-navigation']} ${navOpen ? styles.open : ''}`}
+		>
 			<li>
 				<a href="/">Home</a>
 			</li>

@@ -2,12 +2,8 @@
 
 <script>
 	import styles from './layout.module.scss';
-	import { onDestroy, onMount } from 'svelte';
 
 	let navOpen = false;
-	function handleNav() {
-		navOpen = !navOpen;
-	}
 
 	let resizeTimer = 0;
 
@@ -23,7 +19,7 @@
 <!-- Navbar -->
 <div class={styles['container']}>
 	<button
-		on:click={handleNav}
+		on:click={() => (navOpen = !navOpen)}
 		class={`${styles['mobile-nav-toggle']} ${navOpen ? styles.closeBtn : ''}`}
 		aria-controls="primary-navigation"
 		aria-expanded="false"><span class="sr-only">Menu</span></button
